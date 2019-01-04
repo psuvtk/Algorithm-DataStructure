@@ -90,8 +90,5 @@ public class Stack<Item> implements Iterable<Item> {
         for (String s: stack) {
             System.out.println(s);
         }
-
-        Bag<Integer> bag = new Bag<>();
-
     }
 }
