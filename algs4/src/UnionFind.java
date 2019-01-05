@@ -1,3 +1,6 @@
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
+
 public class UnionFind {
     private int[] id;
     private int count;
@@ -11,6 +14,10 @@ public class UnionFind {
 
     public int count() {
         return count;
+    }
+
+    public boolean connected(int p, int q) {
+
     }
 
     /**
@@ -35,6 +42,14 @@ public class UnionFind {
     }
 
     public static void main(String[] args) {
-
+        int N = StdIn.readInt();
+        UnionFind uf = new UnionFind(N);
+        while (!StdIn.isEmpty()) {
+            int p = StdIn.readInt();
+            int q = StdIn.readInt();
+            if (uf.connected(p, q)) continue;
+            uf.union(p, q);
+            StdOut.println(p + " " + q);
+        }
     }
 }
