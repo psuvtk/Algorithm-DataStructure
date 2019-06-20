@@ -1,11 +1,11 @@
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
-public class UnionFind {
+public class UF {
     private int[] id;
     private int count;
 
-    public UnionFind(int N) {
+    public UF(int N) {
         count = N;
         id = new int[N];
         for (int i=0; i < N; i++)
@@ -14,10 +14,6 @@ public class UnionFind {
 
     public int count() {
         return count;
-    }
-
-    public boolean connected(int p, int q) {
-
     }
 
     /**
@@ -30,20 +26,30 @@ public class UnionFind {
         return p;
     }
 
+    public boolean connected(int p, int q) {
+        int pR = find(p);
+        int qR = find(q);
+        return pR == qR;
+    }
+
     /**
      * quick-union
      * @param p
      * @param q
      */
     public void union(int p, int q) {
-        if (find(p) == find(q)) return;
-        while (p != id[p]) p = id[p];
-        id[p] = q;
+        int pR = find(p);
+        int qR = find(q);
+
+        if (pR == qR) return;
+
+        id[pR] = qR;
+        count--;
     }
 
     public static void main(String[] args) {
         int N = StdIn.readInt();
-        UnionFind uf = new UnionFind(N);
+        UF uf = new UF(N);
         while (!StdIn.isEmpty()) {
             int p = StdIn.readInt();
             int q = StdIn.readInt();

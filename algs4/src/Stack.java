@@ -58,7 +58,7 @@ public class Stack<Item> implements Iterable<Item> {
     private class StackIterator<T> implements Iterator<T> {
         private Node<T> current;
 
-        public StackIterator(Node<T> top){
+        StackIterator(Node<T> top){
             current = top;
         }
 
